@@ -9,9 +9,10 @@ export default class Cart {
   isEmpty() {
     // ваш код
     if (this.cartItems.length === 0) {
-      //console.log('пустой');
+      console.log('пустой');
       return true;
     }
+    return false;
   }
 
   addProduct(product) {
@@ -19,9 +20,9 @@ export default class Cart {
       let q = this.cartItems.find(e => e.product.id === product.id);
       if (q !== undefined) { q.count += 1;}
       else {this.cartItems.push({product: product, count: 1});}
-      //console.log(this.cartItems, this.cartItems.length);
-      //this.updateProductCount();
-      //this.onProductUpdate(cartItem);
+      console.log(this.cartItems, this.cartItems.length);
+      this.onProductUpdate();
+
     }
   }
 
@@ -32,16 +33,14 @@ export default class Cart {
     q.count = newCount;
     if (q.count == 0) 
     { 
-      //console.log('удалён');
+      console.log('удалён');
       this.cartItems.splice(ind, 1);
     } 
     else {
-      //console.log('изменение количества', q.count);
+      console.log('изменение количества', q.count);
       return q.count;
     }
-    //this.getTotalCount();
-    //this.getTotalPrice();
-    //this.onProductUpdate();
+    this.onProductUpdate();
   }
   
 
@@ -54,6 +53,7 @@ export default class Cart {
     else {
       let sum = 0;
       this.cartItems.forEach(e => sum += e.count);
+      console.log(sum);
       return sum;
     }
   }
@@ -65,7 +65,7 @@ export default class Cart {
     else {
       let cost = 0;
       this.cartItems.forEach(e => cost = cost + (e.count * e.product.price));
-      //console.log(cost);
+      console.log(cost);
       return cost;
     }
   }
