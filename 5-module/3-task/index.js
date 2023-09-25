@@ -28,13 +28,9 @@ function initCarousel() {
     }
   }
 
-  function resizeFunc () {
-    carouselSlideWidth = document.querySelector('.carousel__slide').offsetWidth;
-    carouselInnerWidth = -(slideNo - 1) * carouselSlideWidth;
-    carouselInner.style.transform = 'translateX(' + (-(slideNo - 1) * carouselSlideWidth) + 'px)';
-  }
+
 
   rightArrow.addEventListener('click', rightArrowMove);
   leftArrow.addEventListener('click', leftArrowMove);
-  window.onresize = resizeFunc;
+  
 }
